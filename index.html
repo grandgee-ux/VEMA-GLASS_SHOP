@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glass Mart | Sign in</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="auth-brand">
+      <div class="brand-mark">GM</div>
+      <p class="eyebrow">GLASS MART MANAGEMENT</p>
+      <h1>Welcome back.</h1>
+      <p class="muted-light">Sign in to continue to your Glass Mart workspace.</p>
+    </section>
+    <section class="auth-panel">
+      <div class="mobile-brand"><span class="brand-mark small">GM</span><span>GLASS MART</span></div>
+      <p class="eyebrow">ACCOUNT ACCESS</p>
+      <h2>Sign in to your account</h2>
+      <form id="loginForm" class="form-stack">
+        <label for="username">Email address</label>
+        <input id="username" name="username" type="email" autocomplete="username" placeholder="Enter your email address" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        <p id="loginError" class="error-message" role="alert"></p>
+        <button class="btn primary full" type="submit">Sign in <span>→</span></button>
+      </form>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>

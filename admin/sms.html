@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Notifications</title>
+
+<style>
+
+.sms-module{
+    padding:20px;
+    font-family:Segoe UI, sans-serif;
+    background:#f4f6f9;
+    min-height:100vh;
+}
+
+.sms-title{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.sms-title h1{
+    margin:0;
+    color:#1f2937;
+}
+
+.sms-title p{
+    margin-top:5px;
+    color:#6b7280;
+}
+
+.sms-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.sms-card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.sms-card h2{
+    margin-top:0;
+    color:#111827;
+}
+
+.sms-field{
+    margin-bottom:15px;
+}
+
+.sms-field label{
+    display:block;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.sms-field input,
+.sms-field textarea,
+.sms-field select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+}
+
+.sms-field textarea{
+    height:150px;
+}
+
+.sms-btn{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.sms-preview{
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.sms-preview h4{
+    margin-top:0;
+}
+
+.notification-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.notification-table th{
+    background:#f3f4f6;
+    padding:12px;
+    text-align:left;
+}
+
+.notification-table td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.delivered{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.pending{
+    color:#ea580c;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+
+.sms-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body class="app-body" data-required-role="admin" data-page="sms">
+
+<div class="sms-module">
+
+    <div class="sms-title">
+        <h1>SMS Notification Centre</h1>
+        <p>Automatic customer notifications for orders, sales and deliveries.</p>
+    </div>
+
+    <div class="sms-grid">
+
+        <div class="sms-card">
+
+            <h2>SMS Templates</h2>
+
+            <div class="sms-preview">
+                <h4>Order Confirmation</h4>
+                <p>
+                    Dear Customer,<br>
+                    Your order #ORD-1024 has been received successfully.
+                    Thank you for choosing VEMA Glass Shop.
+                </p>
+            </div>
+
+            <div class="sms-preview">
+                <h4>Sale Receipt</h4>
+                <p>
+                    Thank you for your purchase.
+                    Payment for Invoice #INV-205 has been received successfully.
+                </p>
+            </div>
+
+            <div class="sms-preview">
+                <h4>Order Ready</h4>
+                <p>
+                    Your order is complete and ready for collection.
+                    Visit VEMA Glass Shop at your convenience.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="sms-card">
+
+            <h2>Create New SMS</h2>
+
+            <div class="sms-field">
+                <label>Message Category</label>
+                <select>
+                    <option>Order Confirmation</option>
+                    <option>Sale Receipt</option>
+                    <option>Delivery Notice</option>
+                    <option>Promotion</option>
+                </select>
+            </div>
+
+            <div class="sms-field">
+                <label>Customer Name</label>
+                <input type="text" placeholder="John Doe">
+            </div>
+
+            <div class="sms-field">
+                <label>Phone Number</label>
+                <input type="text" placeholder="+254712345678">
+            </div>
+
+            <div class="sms-field">
+                <label>Message</label>
+                <textarea placeholder="SMS message appears here"></textarea>
+            </div>
+
+            <span><button class="sms-btn">
+                Queue SMS
+            </button></span>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="sms-card">
+
+        <h2>Notification History</h2>
+
+        <table class="notification-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Order No.</th>
+                    <th>SMS Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>20/11/2026</td>
+                    <td>John Kamau</td>
+                    <td>ORD-1024</td>
+                    <td>Order Confirmation</td>
+                    <td class="delivered">Delivered</td>
+                </tr>
+
+                <tr>
+                    <td>20/11/2026</td>
+                    <td>Jane Wanjiku</td>
+                    <td>ORD-1025</td>
+                    <td>Sale Receipt</td>
+                    <td class="pending">Pending</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../js/supabase.js"></script><script src="../js/auth.js"></script><script src="../js/workspace.js"></script></body>
+</html>
